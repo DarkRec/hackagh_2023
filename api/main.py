@@ -1,4 +1,5 @@
 from fastapi import FastAPI
-from app.routers import auth, ocena, przemiot, student, kierunek, wykladowca
+from app.config import settings
+
 
 app = FastAPI()
