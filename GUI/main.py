@@ -4,13 +4,9 @@ import customtkinter
 import os
 from PIL import Image
 
-
-
 customtkinter.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
 is_login = False
-
-
 
 class App(customtkinter.CTk):
     def __init__(self):
@@ -109,7 +105,7 @@ class App(customtkinter.CTk):
         self.scrollable_checkbox_frame = ScrollableCheckBoxFrame(master=self.phone, width=350, command=self.checkbox_frame_event,
                                                                  item_list=[opcje[i] for i in range(len(opcje))])    
         #self.scrollable_checkbox_frame.grid(row=1, column=0, padx=(20, 0), pady=(20, 0), sticky="nsew")
-        self.scrollable_checkbox_frame.grid(row=1, column=0, padx=15, pady=15, sticky="ns")
+        self.scrollable_checkbox_frame.grid(row=2, column=0, padx=15, pady=15, sticky="ns")
         
         button = customtkinter.CTkButton(master=self.phone, text="Uprawnione osoby", width=50, command=self.logout, font=customtkinter.CTkFont(size=20))
         button.grid(row=7, column=0, padx=0, pady=5, sticky="s")
@@ -119,10 +115,6 @@ class App(customtkinter.CTk):
         button = customtkinter.CTkButton(master=self.phone, text="Logout", width=50, command=self.logout, font=customtkinter.CTkFont(size=30))
         button.grid(row=9, column=0, padx=0, pady=10, sticky="s")
 
-        """self.slider_1 = customtkinter.CTkSlider(self.phone, from_=0, to=1, number_of_steps=4)
-        self.slider_1.grid(row=3, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
-
-        self.slider_1.configure(command=self.progressbar_2.set)"""
 
 
         # ---------- CAR ----------
@@ -134,6 +126,23 @@ class App(customtkinter.CTk):
         self.car_text = customtkinter.CTkLabel(master=self.car_space, text="Car", font=customtkinter.CTkFont(size=20, weight="bold"))
         self.car_text.grid(row=0, column=0, sticky="n")
 
+
+
+        self.progressbar_1 = customtkinter.CTkProgressBar(self.phone)
+        self.progressbar_1.grid(row=1, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
+        self.progressbar_2 = customtkinter.CTkProgressBar(self.phone)
+        self.progressbar_2.grid(row=3, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
+        self.progressbar_3 = customtkinter.CTkProgressBar(self.phone, orientation="vertical")
+        self.progressbar_3.grid(row=0, column=1, rowspan=13, padx=(10, 20), pady=(10, 10), sticky="ns")
+        self.slider_1 = customtkinter.CTkSlider(self.phone, from_=0, to=1, number_of_steps=4)
+        self.slider_1.grid(row=4, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
+        self.slider_2 = customtkinter.CTkSlider(self.phone, orientation="vertical")
+        self.slider_2.grid(row=5, column=0, rowspan=5, padx=(10, 10), pady=(10, 10), sticky="w")
+
+        self.slider_1.configure(command=self.progressbar_2.set)
+        self.slider_2.configure(command=self.progressbar_3.set)
+        self.progressbar_1.configure(mode="indeterminnate")
+        self.progressbar_1.start()
 
 
     def clearGUI(self, window) -> None:  # for everyone
