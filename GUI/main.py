@@ -99,10 +99,18 @@ class App(customtkinter.CTk):
 
         # Phone label
         self.phone_label = customtkinter.CTkLabel(master=self.phone, text="Login Next-Gen Car Sharnig", font=customtkinter.CTkFont(size=30, weight="bold"))#, image=bg)#, text_font=("Comic Sans", 24))
-        self.phone_label.grid(row=0, column=0, padx=10, pady=130)
+        self.phone_label.grid(row=0, column=0, padx=10, pady=20)
 
         button = customtkinter.CTkButton(master=self.phone, text="Logout", width=50, command=self.logout, font=customtkinter.CTkFont(size=30))
         button.grid(row=6, column=0, padx=0, pady=0, sticky="s")
+
+        # create scrollable checkbox frame
+        opcje = ["Lock", "AC", "OC", "Wipes", "Airplane mode", "Summarine", "Cabrio", "Reverse cabrio", "Power", "Sebix mode"]
+        self.scrollable_checkbox_frame = ScrollableCheckBoxFrame(master=self.phone, width=350, command=self.checkbox_frame_event,
+                                                                 item_list=[opcje[i] for i in range(len(opcje))])    
+        #self.scrollable_checkbox_frame.grid(row=1, column=0, padx=(20, 0), pady=(20, 0), sticky="nsew")
+        self.scrollable_checkbox_frame.grid(row=1, column=0, padx=15, pady=15, sticky="ns")
+
 
 
 
@@ -125,6 +133,56 @@ class App(customtkinter.CTk):
     def clearGUI(self, window) -> None:  # for everyone
         for widget in window.winfo_children():
             widget.destroy()
+
+
+
+    def checkbox_frame_event(self):
+        self.clearGUI(self.car_space)
+
+        # Car label
+        self.car_text = customtkinter.CTkLabel(master=self.car_space, text="Car", font=customtkinter.CTkFont(size=20, weight="bold"))
+        self.car_text.grid(row=0, column=0, sticky="n")
+
+        # Car frame
+        self.car = customtkinter.CTkFrame(self.car_space, corner_radius=50, fg_color="transparent")#, width=140)
+        self.car.grid(row=1, column=0, sticky="nsew")
+        #self.car.grid_rowconfigure(4, weight=1)
+
+        checkbox = f"checkbox frame modified: {self.scrollable_checkbox_frame.get_checked_items()}"
+        print(checkbox)
+
+        # Car label
+        self.car_label = customtkinter.CTkLabel(master=self.car, text=checkbox, font=customtkinter.CTkFont(size=30, weight="bold"))#, image=bg)#, text_font=("Comic Sans", 24))
+        self.car_label.grid(row=1, column=0, padx=10, pady=10)
+
+
+    
+class ScrollableCheckBoxFrame(customtkinter.CTkScrollableFrame):
+    def __init__(self, master, item_list, command=None, **kwargs):
+        super().__init__(master, **kwargs)
+
+        self.command = command
+        self.checkbox_list = []
+        for i, item in enumerate(item_list):
+            self.add_item(item)
+
+    def add_item(self, item):
+        checkbox = customtkinter.CTkCheckBox(self, text=item)
+        if self.command is not None:
+            checkbox.configure(command=self.command)
+        checkbox.grid(row=len(self.checkbox_list), column=0, pady=(0, 10))
+        self.checkbox_list.append(checkbox)
+
+    def remove_item(self, item):
+        for checkbox in self.checkbox_list:
+            if item == checkbox.cget("text"):
+                checkbox.destroy()
+                self.checkbox_list.remove(checkbox)
+                return
+
+    def get_checked_items(self):
+        return [checkbox.cget("text") for checkbox in self.checkbox_list if checkbox.get() == 1]
+    
 
 
 
