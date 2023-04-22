@@ -13,7 +13,7 @@ class car {
 	std::string active_user_ID;
 	//double interior_temperature;
 	//double outside_temperature;
-	//double current_speed;
+	double current_speed;
 	bool is_car_locked;
 	bool is_engine_on;
 	bool is_key_docked;
@@ -23,11 +23,12 @@ class car {
 	int authenticate(std::string);
 public:
 	void show_car_state();
+	void show_users_ID();
 	double* get_location();
 	car(std::string, std::vector<std::string>, int*);
 	void unlock(std::string);
 	void lock();
-	void start_engine();
+	void start_engine(std::string = "");
 	void stop_engine();
 	void set_temperature(double);
 	void drive();

@@ -53,6 +53,9 @@ void import_users(std::string filename)
 	std::vector<car_user_settings*> cs;
 	cs.push_back(new car_user_settings(car_ID, car_settings));
 	users_DB.push_back(new user(user_ID, cs));
+	user_ID = "2";
+	cs.clear();
+	users_DB.push_back(new user(user_ID, cs));
 	//std::fstream file;
 	//file.open(filename);
 	//if (file.good())

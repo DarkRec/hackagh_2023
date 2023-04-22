@@ -12,7 +12,19 @@ int main()
 	initialize();
 	user* us = users_DB[0];
 	car* ca = cars_DB[0];
-	ca->show_car_state();
+	us->show_cars_settings();
+	ca->show_users_ID();
 	ca->unlock(us->get_user_ID());
-	ca->show_car_state();
+	ca->start_engine(us->get_user_ID());
+	ca->drive();
+	ca->stop_engine();
+
+	std::cout << std::endl;
+
+	us = users_DB[1];
+	us->show_cars_settings();
+	ca->show_users_ID();
+	ca->unlock(us->get_user_ID());
+	ca->start_engine();
+	ca->drive();
 }
