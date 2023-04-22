@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 
 class Car(BaseModel):
-    id: int = Field(...)
+    id: int = Field(default_factory=int, alias="_id")
     ownerID: int = Field(...)
     otherUsers: str = Field(...)
     country: str = Field(...)
@@ -13,13 +13,6 @@ class Info():
     Brand: str = Field(...)
     Model: str = Field(...)
     
-
-class User(BaseModel):
-    id: int = Field(...)
-    name: str = Field(...)
-    lastname: str = Field(...)
-    settings: str = Field(...)
-
 class Settings(BaseModel):
     leftMirrorX: int = Field(...)
     leftMirrorY: int = Field(...)
@@ -35,3 +28,12 @@ class Settings(BaseModel):
     passengerSeatAngle: int = Field(...)
     steeringWheelX: int = Field(...)
     steeringWheelY: int = Field(...)
+
+class User(BaseModel):
+    id: int = Field(default_factory=int, alias="_id")
+    name: str = Field(...)
+    lastname: str = Field(...)
+    settings: Settings = Field(...)
+
+    class Config:
+        allow_population_by_field_name = True
