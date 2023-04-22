@@ -3,14 +3,9 @@ from fastapi import APIRouter, Body, Request, Response, HTTPException, status
 from fastapi.encoders import jsonable_encoder
 from app.db.models import *
 from app.config import settings
-from app.schemas import Car
+from app.schemas import Car, Location
 
 router = APIRouter()
-
-@router.get(f"/api/{settings.VERSION}")
-def get_cars():
-    return {"response": "Get cars"}
-
 
 @router.get("/{car_id}")
 async def get_single_user(user_id: str):
@@ -25,3 +20,20 @@ def create_car(request: Request, car: Car = Body(...)):
     )
 
     return created_car
+
+
+@router.patch("/location/")
+def change_location(request: Request, location: Location = Body(...)):
+    location = jsonable_encoder(location)
+    # location = {k:v for k,v in location.dict().items() if v is not None}
+    # print(location.id)
+    # my_query = {"_id": location['id']}
+    to_edit = request.app.database["cars"].update_one(
+        {"_id": location['id']}, {"$set": {"location": location['location']}}
+        # {"_id", location]id}, {"$set": {"location": location.location}}
+    )
+
+    if to_edit.modified_count == 0:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Car with ID {location['id']} not found")
+    else:
+        return {"response": f"position changed: {location['location']}"}

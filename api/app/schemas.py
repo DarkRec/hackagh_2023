@@ -1,11 +1,12 @@
 from pydantic import BaseModel, Field
+from typing import Optional,List
 import uuid
 
 class Car(BaseModel):
     id: str = Field(default_factory=uuid.uuid4, alias="_id")
     ownerID: str = Field(...)
-    adminsList: str = Field(...)
-    usersList: str = Field(...)
+    adminsList: List[str] = Field(...)
+    usersList: List[str] = Field(...)
     country: str = Field(...)
     location: str = Field(...)
     info: str = Field(...)
@@ -35,7 +36,7 @@ class User(BaseModel):
     id: str = Field(default_factory=uuid.uuid4, alias="_id", index=True, nullable=False)
     name: str = Field(...)
     lastname: str = Field(...)
-    settings: Settings = Field(...)
+    settings: Optional[Settings] = Field(...)
 
     class Config:
         allow_population_by_field_name = True
@@ -44,3 +45,11 @@ class User(BaseModel):
 class newUser(BaseModel):
     name: str = Field(...)
     lastname: str = Field(...)
+
+
+class Location(BaseModel):
+    id: str
+    location: str
+
+    class Config:
+        allow_population_by_field_name = True

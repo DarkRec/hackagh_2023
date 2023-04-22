@@ -18,10 +18,9 @@ async def get_single_user(user_id: str):
     return {"response": f"Get user: {user_id}"}
 
 
-@router.post("/", response_description="Create a new user", status_code=status.HTTP_201_CREATED, response_model=newUser)#, response_model=User
-def create_user(request: Request, user: newUser = Body(...)):
+@router.post("/", response_description="Create a new user", status_code=status.HTTP_201_CREATED, response_model=User)#, response_model=User
+def create_user(request: Request, user: User = Body(...)):
     user = jsonable_encoder(user)
-    
     new_user = request.app.database["users"].insert_one(user)
     created_user = request.app.database["users"].find_one(
        {"_id": new_user.inserted_id}
