@@ -15,8 +15,4 @@ while True:
 data = data.decode()
 print(data)
 req = requests.patch(url, json={"id": "48bc948c-e5a4-4c14-8e90-84df8dac038c", 
-                        "location": "54.324234, 52.5353"})
-# print(req.respo)
-
-# req = requests.patch(url, {"id": "48bc948c-e5a4-4c14-8e90-84df8dac038c", 
-#                         "location": data})
+                        "location": data})
