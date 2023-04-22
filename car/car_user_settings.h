@@ -1,15 +1,24 @@
 #pragma once
+#include <string>
+#include <vector>
+#include <iostream>
 
 class car_user_settings {
-	double seat_angle;
-	double seat_height;
-	double seat_distance;
-	double steering_wheel_height;
-	double steering_wheel_distance;
-	double left_mirror_angle_x;
-	double left_mirror_angle_y;
-	double right_mirror_angle_x;
-	double right_mirror_angle_y;
-	double rear_mirror_angle_x;
-	double rear_mirror_angle_y;
+	int seat_angle;
+	int seat_height;
+	int seat_distance;
+	int steering_wheel_height;
+	int steering_wheel_distance;
+	int left_mirror_angle_x;
+	int left_mirror_angle_y;
+	int right_mirror_angle_x;
+	int right_mirror_angle_y;
+	int rear_mirror_angle_x;
+	int rear_mirror_angle_y;
+	int lights_angle;
+	std::string car_ID;
+public:
+	std::string get_car_ID() { return car_ID; }
+	car_user_settings(std::string, int*);
+	void show_settings();
 };
