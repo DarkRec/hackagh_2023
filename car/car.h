@@ -11,8 +11,6 @@ class car {
 	std::vector<std::string> users_ID;
 	car_user_settings* active_user_settings;
 	std::string active_user_ID;
-	//double interior_temperature;
-	//double outside_temperature;
 	double current_speed;
 	bool is_car_locked;
 	bool is_engine_on;
@@ -20,7 +18,6 @@ class car {
 	double localization[2];
 	user* find_user();
 	void set_active_user_settings(std::string);
-	int authenticate(std::string);
 public:
 	void show_car_state();
 	void show_users_ID();
@@ -30,7 +27,6 @@ public:
 	void lock();
 	void start_engine(std::string = "");
 	void stop_engine();
-	void set_temperature(double);
 	void drive();
 };
 

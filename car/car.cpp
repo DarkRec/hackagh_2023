@@ -18,11 +18,6 @@ void car::set_active_user_settings(std::string uID)
 	std::cout << "Can't find settings for user " << active_user_ID << std::endl;
 }
 
-int car::authenticate(std::string uID)
-{
-	return 0;
-}
-
 void car::show_car_state()
 {
 	std::cout << "Car ID: " << car_ID << '\n';
@@ -96,11 +91,6 @@ void car::stop_engine()
 	std::cout << "Engine has been stopped.\n";
 	is_key_docked = false;
 	std::cout << "Key is undocked.\n";
-}
-
-void car::set_temperature(double temperature)
-{
-
 }
 
 void car::drive()
