@@ -3,7 +3,6 @@ from app.config import settings
 from pymongo import MongoClient
 from app.routes import users, cars
 
-
 app = FastAPI()
 
 @app.on_event("startup")
@@ -15,5 +14,7 @@ def startup_db_client():
 def shutdown_db_client():
     app.mongodb_client.close()
 
-app.include_router(users.router)
-app.include_router(cars.router)
+app.include_router(users.router, tags=['Users'], prefix='/api/v1/users')
+app.include_router(cars.router, tags=['Cars'], prefix='/api/v1/cars')
+
+

@@ -1,9 +1,11 @@
 from pydantic import BaseModel, Field
+import uuid
 
 class Car(BaseModel):
-    id: int = Field(default_factory=int, alias="_id")
-    ownerID: int = Field(...)
-    otherUsers: str = Field(...)
+    id: str = Field(default_factory=uuid.uuid4, alias="_id")
+    ownerID: str = Field(...)
+    adminsList: str = Field(...)
+    usersList: str = Field(...)
     country: str = Field(...)
     location: str = Field(...)
     info: str = Field(...)
@@ -30,10 +32,15 @@ class Settings(BaseModel):
     steeringWheelY: int = Field(...)
 
 class User(BaseModel):
-    id: int = Field(default_factory=int, alias="_id")
+    id: str = Field(default_factory=uuid.uuid4, alias="_id", index=True, nullable=False)
     name: str = Field(...)
     lastname: str = Field(...)
     settings: Settings = Field(...)
 
     class Config:
         allow_population_by_field_name = True
+
+
+class newUser(BaseModel):
+    name: str = Field(...)
+    lastname: str = Field(...)
