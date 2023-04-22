@@ -11,8 +11,8 @@ while True:
     print(f"Connection from {address} has been established.")
     clientsocket.send(bytes("Hey there!!!","utf-8"))
     data = clientsocket.recv(2048)
-    break
-data = data.decode()
-print(data)
-req = requests.patch(url, json={"id": "48bc948c-e5a4-4c14-8e90-84df8dac038c", 
-                        "location": data})
+    
+    data = data.decode()
+    print(data)
+    req = requests.patch(url, json={"id": "48bc948c-e5a4-4c14-8e90-84df8dac038c", 
+                            "location": data})

@@ -3,13 +3,27 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 #define PORT 1234
   
 int main(int argc, char const* argv[])
 {
     int status, valread, client_fd;
     struct sockaddr_in serv_addr;
-    char* hello = "60.23423434, 50.234234";
+    //char* hello = "60.23423434, 50.234234";
+    
+    srand(time(nullptr)); // seed the random number generator
+
+    // generate random latitude and longitude coordinates
+    double latitude = (rand() % 180) - 90 + static_cast<double>(rand() % 10000000) / 10000000.0;
+    double longitude = (rand() % 360) - 180 + static_cast<double>(rand() % 10000000) / 10000000.0;
+
+    // create a char* variable and format the coordinates as a string literal
+    char* hello = new char[50];
+    sprintf(hello, "%.8f, %.8f", latitude, longitude);
+
     char buffer[2048] = { 0 };
     if ((client_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
         printf("\n Socket creation error \n");

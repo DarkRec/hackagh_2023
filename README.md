@@ -43,8 +43,8 @@ Feature might be deferend depend on geolocalization due to law regulations
 
 ## Contact
 Created by:
-- [@niewiaro](https://github.com/Niewiaro)\n
-- [@DarkRec](https://github.com/DarkRec)\n
-- [@jeremi1111111](https://github.com/jeremi1111111)\n
-- [@curaposterior](https://github.com/curaposterior)\n
-- [@vlulus](https://github.com/vlulus)\n
+- [@niewiaro](https://github.com/Niewiaro)
+- [@DarkRec](https://github.com/DarkRec)
+- [@jeremi1111111](https://github.com/jeremi1111111)
+- [@curaposterior](https://github.com/curaposterior)
+- [@vlulus](https://github.com/vlulus)
