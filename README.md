@@ -1,5 +1,5 @@
 # Hackagh_2023 - Next-Gen Car Sharing
-> This is amazing project for Next-Gen Car Sharing
+> This is an amazing project for Next-Gen Car Sharing.
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -12,8 +12,8 @@
 * [Idea Behind Project](#idea-behind-project)
 
 ## General Information
-- This project is embeded base code with server comunication and GUI info interface. Its main purpose is to make your car smart just by adding simpule module to main car's computer
-- It's our first hackaton competition event, so we are extraordinary proud of ourselfs :D
+- This project is an embedded base code with server communication and GUI info interface. Its main purpose is to make your car smart just by adding a simple module to the main car's computer.
+- It's our first hackathon competition event, so we are extraordinarily proud of ourselves. :D
 
 ## Technologies Used
 - Python 3.11.1
@@ -23,23 +23,20 @@
 
 ## Features
 - Make your car SMART!
-- Share key among your family, friends or even clients
-- Control car via smartphone (cool down, heat up, lock, lend)
+- Share the key among your family, friends, or even clients.
+- Control your car via smartphone (cool down, heat up, lock, lend).
 
 ## Setup
-Plug our module to car main computer, insert password and you are free to go!
+Plug our module into the car's main computer, insert the password, and you are free to go!
 
 ## Usage
-- Install our app (realase in comersial version)
+- Install our app.
 
 WARNING
 Feature might be deferend depend on geolocalization due to law regulations
 
-## Acknowledgements
-- We would like to thanks ourself for hard work, brilaint ideas, oudstanding brainsotrm, brights ideas
-
 ## Idea Behind Project
-- We wolud like to change the way that we connect to others and our favorite 4 wheels
+- We would like to change the way we connect with others and our favorite four wheels.
 
 ## Contact
 Created by:
